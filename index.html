@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Are You Mortal?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        .question-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .btn-container {
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        #noBtn2 {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="question-container">
+        <div class="question" id="question1">
+            Are you mortal?
+        </div>
+        <div class="btn-container">
+            <button class="btn" id="yesBtn1">Yes</button>
+            <button class="btn" id="noBtn1">No</button>
+        </div>
+
+        <div class="question" id="question2" style="display: none;">
+            Mr. Frost is superior to you?
+        </div>
+        <div class="btn-container" id="btn-container2" style="display: none;">
+            <button class="btn" id="yesBtn2">Yes</button>
+            <button class="btn" id="noBtn2">No</button>
+        </div>
+    </div>
+
+    <script>
+        // First question handling
+        const noBtn1 = document.getElementById("noBtn1");
+        const yesBtn1 = document.getElementById("yesBtn1");
+
+        noBtn1.addEventListener("click", function() {
+            yesBtn1.click();  // Automatically clicks 'Yes' if 'No' is clicked
+        });
+
+        yesBtn1.addEventListener("click", function() {
+            // Show the second question and buttons
+            document.getElementById("question1").style.display = "none";
+            noBtn1.style.display = "none";
+            yesBtn1.style.display = "none";
+
+            document.getElementById("question2").style.display = "block";
+            document.getElementById("btn-container2").style.display = "block";
+        });
+
+        // Second question handling
+        const noBtn2 = document.getElementById("noBtn2");
+        const yesBtn2 = document.getElementById("yesBtn2");
+
+        noBtn2.addEventListener("mouseover", function(event) {
+            // Move the 'No' button when mouse gets close to it
+            noBtn2.style.top = Math.random() * 500 + "px";
+            noBtn2.style.left = Math.random() * 500 + "px";
+        });
+
+        yesBtn2.addEventListener("click", function() {
+            alert("You've accepted Mr. Frost is superior!");
+        });
+    </script>
+</body>
+</html>
